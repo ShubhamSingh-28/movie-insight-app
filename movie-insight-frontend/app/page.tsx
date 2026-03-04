@@ -8,6 +8,8 @@ const [movieId, setMovieId] = useState("");
 const [data, setData] = useState(null);
 const [loading, setLoading] = useState(false);
 
+const API_URL = process.env.API_URL;
+
  const fetchMovie = async () => {
 
   try {
@@ -15,7 +17,7 @@ const [loading, setLoading] = useState(false);
     setLoading(true);
 
     const res = await axios.get(
-      `http://localhost:3000/api/movie/${movieId}`
+      `${API_URL}/api/movie/${movieId}`
     );
 
     setData(res.data);
