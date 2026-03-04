@@ -3,12 +3,14 @@
 import { useState } from "react";
 import axios from "axios";
 
+
 export default function Home() {
 const [movieId, setMovieId] = useState("");
 const [data, setData] = useState(null);
 const [loading, setLoading] = useState(false);
 
-const API_URL = process.env.API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+console.log("API_URL:", API_URL);
 
  const fetchMovie = async () => {
 
@@ -78,7 +80,7 @@ const API_URL = process.env.API_URL;
   );
 }
 
-function MovieCard({ data }) {
+function MovieCard({ data }: { data: any }) {
 
   const { movie, reviews, sentiment } = data;
 
@@ -139,7 +141,7 @@ function MovieCard({ data }) {
 
         <div className="space-y-4">
 
-          {reviews.slice(0,5).map((r,i)=>(
+          {reviews.slice(0,5).map((r:any,i:number)=>(
             <div
               key={i}
               className="bg-gray-800 p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition"
